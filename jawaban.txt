@@ -1,0 +1,64 @@
+Nomor 1:
+create database myshop;
+
+Nomor 2:
+
+create table customers(
+    -> id int primary key auto_increment,
+    -> name varchar(255),
+    -> email varchar(255),
+    -> password varchar(255)
+    -> );
+
+create table orders(
+    -> id int primary key auto_increment,
+    -> amount varchar(255),
+    -> category_id int
+    -> );
+alter table items add foreign key (category_id) references categories(id);
+
+
+create table items (
+    -> id int primary key auto_increment,
+    -> name varchar(255),
+    -> description varchar(255),
+    -> price int,
+    -> stock int,
+    -> category_id int
+    -> );
+
+alter table items add foreign key (category_id) references categories(id);
+
+Nomor 3:
+
+insert into customers values ('', 'John Doe', 'john@doe.com', 'john123');
+insert into customers values ('', 'Jane Doe', 'jane@doe.com', 'jenita123');
+
+insert into categories values ('', 'gadget');
+insert into categories values ('', 'cloth');
+insert into categories values ('', 'men');
+insert into categories values ('', 'women');
+insert into categories values ('', 'branded');
+
+insert into orders values ('', '500', '1');
+insert into orders values ('', '200', '2');
+insert into orders values ('', '750', '2');
+insert into orders values ('', '250', '1');
+insert into orders values ('', '400', '2');
+
+Nomor 4:
+
+a:
+select id, name, email from users;
+
+b:
+select * from items where price > '1000000';
+select * from items where name like "%Uniklo%";
+
+c:
+select items.name, items.description, items.price, items.stock, items.category_id, categories.name as kategori from items inner join categories on items.category_id=categories.id;
+
+Nomor 5:
+
+update items set price = '2500000' where id = '1'; atau
+update items set price = '2500000' where name = 'Sumsang b50';
